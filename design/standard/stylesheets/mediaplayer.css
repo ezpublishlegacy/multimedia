@@ -1,0 +1,161 @@
+.controls{
+	background-image:url(../images/controls.png);
+	bottom: 8px;
+	left: 0;
+	position:absolute;
+}
+
+.controls .btn{
+	background-image:url(../images/controls.png);
+	background-repeat:no-repeat;
+	border-right:1px solid #b6b6b6;
+	bottom:0px;
+	cursor:pointer;
+	display:block;
+	height:20px;
+	position:absolute;
+	text-indent:-9999em;
+	width:29px;
+}
+
+.mediaplayer{
+	margin:20px auto;
+	position:relative;
+	text-align:center;
+	width:500px;
+}
+
+.mediaplayer.audio .player{
+	height:0;
+}
+
+.default{
+	background-color:#dedede;
+	background-position:0 -4px;
+	height:20px;
+	width:500px;
+}
+
+.default .play, .default .pause{
+	background-position:0 -46px;
+	left:30px;
+}
+
+.default .play:hover{
+	background-position:0 -66px;
+}
+
+.default .pause{
+	background-position:0 -86px;
+}
+
+.default .pause:hover{
+	background-position:0 -107px;
+}
+
+.default .stop{
+	background-position:0 -307px;
+}
+
+.default .stop:hover{
+	background-position:0 -326px;
+}
+
+.default .volume-up{
+	background-position:0 -206px;
+	left:442px;
+}
+
+.default .volume-up:hover{
+	background-position:0 -226px;
+}
+
+.default .volume-down{
+	background-position:0 -246px;
+	left:413px;
+}
+
+.default .volume-down:hover{
+	background-position:0 -266px;
+}
+
+.default .mute, .default .unmute{
+	background-position:5px -126px;
+	left:467px;
+	width:32px;
+}
+
+.default .mute:hover{
+	background-position:5px -146px;
+}
+
+.default .unmute{
+	background-position:5px -166px;
+}
+
+.default .unmute:hover{
+	background-position:5px -186px;
+}
+
+.default .track{
+	border-right:1px;
+	border-left:1px;
+	cursor:pointer;
+	height:10px;
+	left:66px;
+	padding-top:5px;
+	position:absolute;
+	width:51.5%;
+}
+
+.default .playhead{
+	background:url(../images/controls.png) no-repeat -6px -289px;
+	cursor:pointer;
+	height:15px;
+	position:absolute;
+	top:4px;
+	width:15px;
+}
+
+.default .progress, .default .buffer{
+	background-color:#4fd8ff;
+	filter:alpha(opacity=40);
+	height:3px;
+	opacity:0.4;
+	padding-top:7px;
+	position:absolute;
+	width:0;
+}
+
+.default .buffer{
+	background:url(../images/controls.png) repeat 0 -24px;
+	filter:alpha(opacity=50);
+	opacity:0.5;
+}
+
+.default .time{
+	border:1px solid #b6b6b6;
+	border-width:0 1px;
+	color:#5b5b5b;
+	font-family:futura,"Lucida Grande","bitstream vera sans","trebuchet ms",verdana,arial;
+	font-size:11px;
+	left:330px;
+	padding:3px 0 2px;
+	position:absolute;
+	text-align:center;
+	width:85px;
+}
+
+.default .time strong{
+	color:#212121;
+	font-weight:normal;
+}
+
+.player {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.player a img {
+	border: none;
+}
