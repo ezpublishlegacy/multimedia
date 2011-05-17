@@ -1,5 +1,11 @@
 <?php /* #?ini charset="utf-8"?
 
+[BOTRSettings]
+Key=
+Private=
+DefaultPlayer=
+
+
 [TemplateSettings]
 ExtensionAutoloadPath[]=multimedia
 
