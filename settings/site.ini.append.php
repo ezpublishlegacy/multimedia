@@ -1,11 +1,5 @@
 <?php /* #?ini charset="utf-8"?
 
-[BOTRSettings]
-Key=
-Private=
-DefaultPlayer=
-
-
 [TemplateSettings]
 ExtensionAutoloadPath[]=multimedia
 
@@ -13,7 +7,6 @@ ExtensionAutoloadPath[]=multimedia
 TranslationExtensions[]=multimedia
 
 [RoleSettings]
-PolicyOmitList[]=mav/view
-PolicyOmitList[]=botr_video
+PolicyOmitList[]=botr_video_dt
 
 */ ?>

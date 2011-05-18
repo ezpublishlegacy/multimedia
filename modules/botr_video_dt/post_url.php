@@ -4,7 +4,7 @@ $vars = (count($_POST)) ? $_POST : $_GET;
 
 if (array_key_exists('video_key', $vars)) {
 
-$ini = new eZINI;
+$ini = new eZINI('botr.ini');
 $Key = $ini->variable('BOTRSettings', 'Key');
 $Private = $ini->variable('BOTRSettings', 'Private');
 $botr_api = new Botr_API($Key,$Private);

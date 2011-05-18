@@ -26,7 +26,7 @@
 
 	function modify(&$tpl, &$operatorName, &$operatorParameters, &$rootNamespace, &$currentNamespace, &$operatorValue, &$namedParameters) {
 		
-		$ini = new eZINI();
+		$ini = new eZINI('botr.ini');
 		$Key = $ini->variable('BOTRSettings', 'Key');
 		$Private = $ini->variable('BOTRSettings', 'Private');
 		$botr_api = new Botr_API($Key,$Private);

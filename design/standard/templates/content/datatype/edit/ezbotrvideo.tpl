@@ -57,10 +57,6 @@
 
     {ezscript_require( array( 'botr.upload.dt.js', 'jquery.uploadProgress.js', 'jquery.urlEncode.js' )  )}
 
-
-
-	{ezcss_require( array('botr.css') )}
-
 	{literal}
 	<script>
 		

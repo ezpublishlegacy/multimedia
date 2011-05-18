@@ -1,6 +1,6 @@
 <?
-
-$ini = new eZINI;
+eZDebug::writeDebug('test');
+$ini = new eZINI('botr.ini');
 $Key = $ini->variable('BOTRSettings', 'Key');
 $Private = $ini->variable('BOTRSettings', 'Private');
 $botr_api = new Botr_API($Key,$Private);
