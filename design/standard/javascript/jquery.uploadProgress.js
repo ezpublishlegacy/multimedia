@@ -109,7 +109,7 @@ jQuery.uploadProgress = function(e, options) {
 		proc=1;
       }
 	  
-	  if (upload == '') {
+	  if (upload == '' || upload.state == 'starting') {
 		proc=1;
       }
 	  

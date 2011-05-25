@@ -106,7 +106,7 @@
 		botr_active_at_id = at_id;
 		try
 		  {
-			$.post("/botr_video_dt/create_url", $('#' + at_id + ' .pre_upload input, #' + at_id + ' .pre_upload textarea').serialize(), function(data){
+			$.post("/botr_video_dt/create_url", $('#' + at_id + ' .pre_upload input, #' + at_id + ' .pre_upload textarea').serialize().replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0'), function(data){
 				var real = $("#" + at_id + " .fake_uploadFile");
 				if (data.indexOf('http:') == 0 && real.val()) {
 					at_id = botr_active_at_id;
