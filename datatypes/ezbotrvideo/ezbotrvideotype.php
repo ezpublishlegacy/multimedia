@@ -33,7 +33,7 @@ class ezbotrvideoType extends eZDataType
     */
     function __construct()
     {
-        parent::__construct( self::DATA_TYPE_STRING, ezi18n( 'extension/bits_video/datatype', 'BOTR Video', 'Datatype name' ) );
+        parent::__construct( self::DATA_TYPE_STRING, 'BOTR Video' );
     }
 
     /*!
