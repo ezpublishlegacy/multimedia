@@ -5,6 +5,7 @@ AvailableCustomTags[]=bits_video_custom
 [DataTypeSettings]
 ExtensionDirectories[]=multimedia
 AvailableDataTypes[]=ezbotrvideo
+AvailableDataTypes[]=ezvimeovideo
 
 [bits_video_custom]
 CustomAttributes[]=video

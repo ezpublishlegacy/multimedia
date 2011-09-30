@@ -1,8 +1,8 @@
 <?php
 //
-// Definition of ezbotrvideoType class
+// Definition of ezvimeovideoType class
 //
-// SOFTWARE NAME: eZ BOTR
+// SOFTWARE NAME: eZ Vimeo
 // SOFTWARE RELEASE: 1.0-0
 // COPYRIGHT NOTICE: Copyright (C) 2011 ThinkCreative
 // SOFTWARE LICENSE: GNU General Public License v2.0
@@ -23,7 +23,7 @@
 //
 //
 
-class ezbotrvideoType extends eZDataType
+class ezvimeovideoType extends eZDataType
 {
 	const DATA_TYPE_STRING = 'ezbotrvideo';
 
@@ -33,7 +33,7 @@ class ezbotrvideoType extends eZDataType
     */
 	function __construct()
 	{
-	    parent::__construct( self::DATA_TYPE_STRING, 'BOTR Video' );
+	    parent::__construct( self::DATA_TYPE_STRING, 'Vimeo Video' );
 	}
 
     /*!
@@ -54,8 +54,8 @@ class ezbotrvideoType extends eZDataType
 	    {
 	        $data = $http->postVariable( $base . '_ezstring_data_text_' . $contentObjectAttribute->attribute( 'id' ) );
 	        $contentObjectAttribute->setAttribute( 'data_text', $data );
-			$botr = new eZBotrVideo( $data );
-			$contentObjectAttribute->setContent( $botr );
+			$vimeo = new eZVimeoVideo( $data );
+			$contentObjectAttribute->setContent( $vimeo );
 	        return true;
 	    }
 	    return false;
@@ -110,8 +110,8 @@ class ezbotrvideoType extends eZDataType
     */
     function objectAttributeContent( $contentObjectAttribute )
     {
-		$botr = new eZBotrVideo( $contentObjectAttribute->attribute( 'data_text' ) );
-		return $botr;
+		$vimeo = new eZVimeoVideo( $contentObjectAttribute->attribute( 'data_text' ));
+		return $vimeo;
     }
 
     function objectDisplayInformation( $objectAttribute, $mergeInfo = false )
@@ -124,4 +124,4 @@ class ezbotrvideoType extends eZDataType
 
 }
 
-eZDataType::register( ezbotrvideoType::DATA_TYPE_STRING, 'ezbotrvideoType' );
+eZDataType::register( ezbotrvideoType::DATA_TYPE_STRING, 'ezvimeovideoType' );
