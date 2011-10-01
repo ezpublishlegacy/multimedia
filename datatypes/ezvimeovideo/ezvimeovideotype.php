@@ -25,7 +25,7 @@
 
 class ezvimeovideoType extends eZDataType
 {
-	const DATA_TYPE_STRING = 'ezbotrvideo';
+	const DATA_TYPE_STRING = 'ezvimeovideo';
 
     /*!
      Construction of the class, note that the second parameter in eZDataType 
@@ -124,4 +124,4 @@ class ezvimeovideoType extends eZDataType
 
 }
 
-eZDataType::register( ezbotrvideoType::DATA_TYPE_STRING, 'ezvimeovideoType' );
+eZDataType::register( ezvimeovideoType::DATA_TYPE_STRING, 'ezvimeovideoType' );

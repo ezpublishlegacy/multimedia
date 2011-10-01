@@ -8,7 +8,9 @@ class eZVimeoVideo
     function eZVimeoVideo( $id )
     {
         $this->ID = $id;
-
+		$json = file_get_contents("http://vimeo.com/api/v2/video/$id/json");
+		$atts = @json_decode($json,1);
+		$this->Attributes = is_array($atts) ? $atts[0] : array();
     }
 
     /*!
@@ -21,7 +23,7 @@ class eZVimeoVideo
 
     function attributes()
     {
-        return array( 'id','players' );
+        return array( 'id','attributes' );
     }
 
     function hasAttribute( $name )
@@ -37,9 +39,9 @@ class eZVimeoVideo
             {
                 return $this->ID;
             }break;
-            case "players" :
+            case "attributes" :
             {
-                return $this->Players;
+                return $this->Attributes;
             }break;
             default:
             {
@@ -50,7 +52,7 @@ class eZVimeoVideo
     }
 
     public $ID;
-	public $Players;
+	public $Attributes;
 
 }
 
