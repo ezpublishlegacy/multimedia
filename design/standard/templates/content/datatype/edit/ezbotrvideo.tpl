@@ -14,7 +14,7 @@
 
 {section show=$attribute_content}
 {set $vid_d = botr_api($attribute_content)}
-{$vid_d|debug('vid_d')}
+
 {$vid_d.html}
 {section-else}
 <p>There is no video file</p>
