@@ -1,7 +1,6 @@
 {def $vid_id = $attribute.content.id}
 {def $defplayer = ezini( 'BOTRSettings', 'DefaultPlayer', 'botr.ini' )
-     $captions = $attribute.object.data_map.captions
-	 $audiodescription = $attribute.object.data_map.audiodescription}
+     $captions = $attribute.object.data_map.captions}
 	
 {if or(is_set($player)|not,$player|eq(''))}
 	{def $player = $defplayer}

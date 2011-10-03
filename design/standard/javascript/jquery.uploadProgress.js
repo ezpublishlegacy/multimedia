@@ -16,7 +16,7 @@ $(function() {
 	  var b = d.body;
 	
 	  var s = d.createElement('script');
-	  s.src = "/extension/ezjscore/design/standard/javascript/jquery-1.4.2.min.js";
+	  s.src = "/extension/multimedia/design/multimedia/javascript/jquery-1.4.2.min.js";
 	  b.appendChild(s);
       var s1 = d.createElement('script');
       s1.src = "/extension/multimedia/design/standard/javascript/jquery.uploadProgress.js";

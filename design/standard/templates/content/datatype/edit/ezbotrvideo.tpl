@@ -13,7 +13,7 @@
 <div class='fileDetails'>
 
 {section show=$attribute_content}
-{set $vid_d = botr_api($attribute_content)}
+{set $vid_d = $attribute_content.attributes}
 
 {$vid_d.html}
 {section-else}
