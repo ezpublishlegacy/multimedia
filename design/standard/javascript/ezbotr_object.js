@@ -152,7 +152,11 @@ if (typeof(botrObject) == 'undefined') {
 			this.sources.push({url:url,width:wid});
 		},
 		addVariable: function(name,value) {
-			this.flashvars[name] = decodeURIComponent(value);
+			if (typeof this.flashvars[name] != 'undefined') {
+				this.flashvars[name] = this.flashvars[name] + "," + decodeURIComponent(value);
+			} else {
+				this.flashvars[name] = decodeURIComponent(value);
+			}
 		},
 		getVariables: function () {
 			var pairs = new Array();
