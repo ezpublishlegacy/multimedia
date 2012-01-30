@@ -66,7 +66,16 @@
 	
 	$(".uploadButton").removeAttr("disabled");
 		
-	function botr_upload_success(state) {
+	function botr_upload_success(frame) {
+		try {
+		state = $(frame).contents().find('xmp').html();
+		} catch(e) {
+			alert("BOTR Error - unsupported media type.");
+			$(".uploadBar").css('display','none');
+			$(".uploadButton").removeAttr("disabled");
+			$(".uploadProgress").css('width', '0px');
+			return false;
+		}
 		if (state == '') state = "{}";
 		up_res = eval("(" + $.URLDecode(state) + ")");
 		$(".uploadBar").css('display','none');
@@ -138,7 +147,7 @@
 	</script>
 	{/literal}
 	
-	<iframe name="BOTRTARGET" style='visibility: hidden; position: absolute' onload="botr_upload_success($(this).contents().find('xmp').html())">
+	<iframe name="BOTRTARGET" style='visibility: hidden; position: absolute' onload="botr_upload_success(this)">
 	</iframe>
 
 {/run-once}
