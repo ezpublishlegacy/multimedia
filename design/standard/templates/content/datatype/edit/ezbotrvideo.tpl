@@ -46,7 +46,7 @@
 </div>
 <div class='fake_uploadForm'>
 	<label>Select video</label>
-	<input class='box fake_uploadFile' type="file" name="file" />
+	<input id="fake_uploadFile_{$attribute.id}" class='box fake_uploadFile' type="file" name="file" />
 </div>
 <small class="uploadText">You can upload any video format (WMV, AVI, MP4, MOV, FLV, ...)</small>
 <input type='button' onclick="getvidposturl('botr_vid_at_{$attribute.id}'); return false;" class="uploadButton" value='Upload'>
@@ -63,6 +63,7 @@
 	var botr_active_at_id = 0;
 	var botr_active_key = 0;
 	var getviddatatimer = null;
+	var cur_bot_file = null;
 	
 	$(".uploadButton").removeAttr("disabled");
 		
@@ -106,7 +107,7 @@
 		
 	$(function(){
 		if (!$("#uploadFormFrame").length) {
-			botrf = $("<div></div>").attr('id', 'uploadFormFrame').css({position: 'absolute', left: '-10000px'});
+			botrf = $("<div></div>").attr('id', 'uploadFormFrame').css({"position":"absolute", "left":"-10000px"});
 			$("body").append(botrf);
 		}
 	})
@@ -117,21 +118,20 @@
 		  {
 			$.post("/botr_video_dt/create_url", $('#' + at_id + ' .pre_upload input, #' + at_id + ' .pre_upload textarea').serialize().replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0'), function(data){
 				var real = $("#" + at_id + " .fake_uploadFile");
+				cur_bot_file = real.val();
 				if (data.indexOf('http:') == 0 && real.val()) {
 					at_id = botr_active_at_id;
-					newf = $("<form></form>").attr({id: 'uploadForm', TARGET: 'BOTRTARGET', METHOD: 'POST', enctype: 'multipart/form-data'})
-					newt = $("<input id='uploadToken' name='token' value=''>");
-					$("#uploadFormFrame").html("");
-					$("#uploadFormFrame").append(newf).append(newt);
-					var cloned = $("<input class='box fake_uploadFile' type='file' name='file' />");
-					real.hide().attr('id', 'uploadFile');
-					cloned.insertAfter(real);   
+					$("#uploadFormFrame").empty();
+					$("#uploadFormFrame").html('<form method="POST" target="BOTRTARGET" id="uploadForm" enctype="multipart/form-data"><input id="uploadToken" name="token" value=""/></form>');
+					var cloned = $('<input class="box fake_uploadFile" type="file" name="file" />'); 
 					goform = $("#uploadForm");
 					goform.attr('action', data);
 					real.appendTo(goform);
 					$("#uploadToken").val(data.split("token=")[1]);
 					botr_add_upoload_progress(at_id);
 					goform.submit();
+					cloned.insertAfter(real).attr('id', 'fake_uploadFile_{/literal}{$attribute.id}{literal}');  
+
 				} else {
 					alert('Please complete all fields before submitting!')
 				}
@@ -154,5 +154,4 @@
 
 {/let}
 {/default}
-
 

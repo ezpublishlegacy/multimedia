@@ -31,7 +31,7 @@ function botr_add_upoload_progress(botr_active_at_id){
 		},
 		// When the upload starts, we hide the input, show the progress and disable the button.
 		start: function() {
-			filename = $("#uploadFile").val().split(/[\/\\]/).pop();
+			filename = cur_bot_file;
 			$("#" + botr_active_at_id + " .uploadBar").css('display','block');
 			$("#" + botr_active_at_id + " .uploadButton").attr('disabled','disabled');
 		},
