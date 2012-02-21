@@ -1,10 +1,13 @@
-$(function() {
-	if($.browser.safari && top.document == document) {
-	  /* iframe to send ajax requests in safari
-	   thanks to Michele Finotto for idea */
+if (/WebKit/i.test(navigator.userAgent) && top.document == document) { // sniff
+  var _timer = setInterval(function() {
+    if (/loaded|complete/.test(document.readyState)) {
+      clearInterval(_timer);
 	  iframe = document.createElement('iframe');
 	  iframe.name = "progressFrame";
-	  $(iframe).css({width: '0', height: '0', position: 'absolute', top: '-3000px'});
+	  iframe.style.width = 0;
+	  iframe.style.height = 0;
+	  iframe.style.position = 'absolute';
+	  iframe.style.top = '-3000px';	  
 	  document.body.appendChild(iframe);
 
 	  var d = iframe.contentWindow.document;
@@ -14,15 +17,16 @@ $(function() {
 	  d.close();
 
 	  var b = d.body;
-	
+
 	  var s = d.createElement('script');
 	  s.src = "/extension/multimedia/design/multimedia/javascript/jquery-1.4.2.min.js";
 	  b.appendChild(s);
-      var s1 = d.createElement('script');
-      s1.src = "/extension/multimedia/design/standard/javascript/jquery.uploadProgress.js";
-      b.appendChild(s1);
-	}
-});
+	  var s1 = d.createElement('script');
+	  s1.src = "/extension/multimedia/design/standard/javascript/jquery.uploadProgress.js";
+	  b.appendChild(s1);
+    }
+  }, 10);
+}
 
 /*
 * jquery.uploadProgress
