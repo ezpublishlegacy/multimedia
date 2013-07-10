@@ -74,7 +74,7 @@ if (/WebKit/i.test(navigator.userAgent) && top.document == document) { // sniff
       /* start callback */
       options.start();
 
-      var uploadProgress = $.browser.safari ? progressFrame.jQuery.uploadProgress : jQuery.uploadProgress;
+      var uploadProgress = (navigator.userAgent.indexOf('Safari') > 0) ? progressFrame.jQuery.uploadProgress : jQuery.uploadProgress;
       options.timer = window.setInterval(function() { uploadProgress(this, options) }, options.interval);
     });
   });

@@ -65,50 +65,50 @@
 	var getviddatatimer = null;
 	var cur_bot_file = null;
 	
-	$(".uploadButton").removeAttr("disabled");
+	jQuery(".uploadButton").removeAttr("disabled");
 		
 	function botr_upload_success(frame) {
 		try {
-		state = $(frame).contents().find('xmp').html();
+		state = jQuery(frame).contents().find('xmp').html();
 		} catch(e) {
 			alert("BOTR Error - unsupported media type.");
-			$(".uploadBar").css('display','none');
-			$(".uploadButton").removeAttr("disabled");
-			$(".uploadProgress").css('width', '0px');
+			jQuery(".uploadBar").css('display','none');
+			jQuery(".uploadButton").removeAttr("disabled");
+			jQuery(".uploadProgress").css('width', '0px');
 			return false;
 		}
 		if (state == '') state = "{}";
-		up_res = eval("(" + $.URLDecode(state) + ")");
-		$(".uploadBar").css('display','none');
-		$(".uploadButton").removeAttr("disabled");
-		$(".uploadProgress").css('width', '0px');
-		$(".uploadText.active").html("You can upload any video format (WMV, AVI, MP4, MOV, FLV, ...)").removeClass('active');
+		up_res = eval("(" + jQuery.URLDecode(state) + ")");
+		jQuery(".uploadBar").css('display','none');
+		jQuery(".uploadButton").removeAttr("disabled");
+		jQuery(".uploadProgress").css('width', '0px');
+		jQuery(".uploadText.active").html("You can upload any video format (WMV, AVI, MP4, MOV, FLV, ...)").removeClass('active');
 		if (up_res == null || up_res.video_key == undefined) {
-			$("#" + botr_active_at_id + " .fileDetails").html("<p>Upload error! Please try again.</p>");
+			jQuery("#" + botr_active_at_id + " .fileDetails").html("<p>Upload error! Please try again.</p>");
 			return false;
 		}
-		$("#" + botr_active_at_id + " .fileDetails").html(up_res.html);
-		$("#" + botr_active_at_id + " .savemarker").val(up_res.video_key);
-		$("#" + botr_active_at_id + " .removebutton").removeAttr("disabled").attr('class', 'removebutton button');
+		jQuery("#" + botr_active_at_id + " .fileDetails").html(up_res.html);
+		jQuery("#" + botr_active_at_id + " .savemarker").val(up_res.video_key);
+		jQuery("#" + botr_active_at_id + " .removebutton").removeAttr("disabled").attr('class', 'removebutton button');
 		clearInterval(getviddatatimer);
 		botr_active_key = up_res.video_key;
 		getviddatatimer = setInterval ( "getviddata()", 5000 )
 	}
 	
 	function getviddata() {
-		$.get('/botr_video_dt/post_url?video_key=' + botr_active_key, function(data) {
-			up_res = eval("(" + $.URLDecode(data.replace(/<\/?xmp>/gm,'')) + ")");
+		jQuery.get('/botr_video_dt/post_url?video_key=' + botr_active_key, function(data) {
+			up_res = eval("(" + jQuery.URLDecode(data.replace(/<\/?xmp>/gm,'')) + ")");
 			if (up_res.conversion != '') {
-				$("#" + botr_active_at_id + " .fileDetails").html(up_res.html);
+				jQuery("#" + botr_active_at_id + " .fileDetails").html(up_res.html);
 				clearInterval(getviddatatimer);
 			}
 		});
 	}
 		
-	$(function(){
-		if (!$("#uploadFormFrame").length) {
-			botrf = $("<div></div>").attr('id', 'uploadFormFrame').css({"position":"absolute", "left":"-10000px"});
-			$("body").append(botrf);
+	jQuery(function(){
+		if (!jQuery("#uploadFormFrame").length) {
+			botrf = jQuery("<div></div>").attr('id', 'uploadFormFrame').css({"position":"absolute", "left":"-10000px"});
+			jQuery("body").append(botrf);
 		}
 	})
 
@@ -116,18 +116,19 @@
 		botr_active_at_id = at_id;
 		try
 		  {
-			$.post("/botr_video_dt/create_url", $('#' + at_id + ' .pre_upload input, #' + at_id + ' .pre_upload textarea').serialize().replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0'), function(data){
-				var real = $("#" + at_id + " .fake_uploadFile");
+			jQuery.post("/botr_video_dt/create_url", jQuery('#' + at_id + ' .pre_upload input, #' + at_id + ' .pre_upload textarea').serialize().replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0'), function(data){
+				var real = jQuery("#" + at_id + " .fake_uploadFile");
 				cur_bot_file = real.val();
 				if (data.indexOf('http:') == 0 && real.val()) {
 					at_id = botr_active_at_id;
-					$("#uploadFormFrame").empty();
-					$("#uploadFormFrame").html('<form method="POST" target="BOTRTARGET" id="uploadForm" enctype="multipart/form-data"><input id="uploadToken" name="token" value=""/></form>');
-					var cloned = $('<input class="box fake_uploadFile" type="file" name="file" />'); 
-					goform = $("#uploadForm");
+					jQuery("#uploadFormFrame").empty();
+					form_html = '<fo'+'rm method="POST" target="BOTRTARGET" id="uploadForm" enctype="multipart/form-data"><input id="uploadToken" name="token" value=""/></form>';
+					jQuery("#uploadFormFrame").html(form_html);
+					var cloned = jQuery('<input class="box fake_uploadFile" type="file" name="file" />'); 
+					goform = jQuery("#uploadForm");
 					goform.attr('action', data);
 					real.appendTo(goform);
-					$("#uploadToken").val(data.split("token=")[1]);
+					jQuery("#uploadToken").val(data.split("token=")[1]);
 					botr_add_upoload_progress(at_id);
 					goform.submit();
 					cloned.insertAfter(real).attr('id', 'fake_uploadFile_{/literal}{$attribute.id}{literal}');  

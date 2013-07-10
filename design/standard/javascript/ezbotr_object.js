@@ -57,8 +57,8 @@ if (typeof(botrObject) == 'undefined') {
 			addme = botrObject.players[idx].getLinkHTML()
 			elm.innerHTML = addme;
 		}
-		if ($("#"+myid+"_cloned").length) {
-			getid = $(addme).attr('id');
+		if (jQuery("#"+myid+"_cloned").length) {
+			getid = jQuery(addme).attr('id');
 			elm = document.getElementById(myid+"_cloned");
 			reg = new RegExp(getid,"gm");
 			elm.innerHTML =addme.replace(reg, getid+"_cloned");
