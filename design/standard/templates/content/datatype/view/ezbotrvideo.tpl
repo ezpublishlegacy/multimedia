@@ -9,13 +9,13 @@
 {def $player_r = $attribute.content.players[$player]}
 
 {if and($attribute.object.data_map.captions|is_set, $captions.has_content)}
-	{def $caption = concat( '&caption=', concat('content/download/', $captions.contentobject_id, '/', $captions.id,'/version/', $captions.version , '/file/', $captions.content.original_filename )|ezroot(no)|urlencode)}
+	{def $caption = concat( '&caption=', $captions.content.filepath|ezroot(no)|urlencode)}
 {else}
 	{def $caption = ''}
 {/if}
 
-{if and($attribute.object.data_map.audiodescription|is_set, $audiodescription.has_content)}
-	{def $audiodescription = concat( '&audiodescription=', concat('content/download/', $audiodescription.contentobject_id, '/', $audiodescription.id,'/version/', $audiodescription.version , '/file/', $audiodescription.content.original_filename )|ezroot(no)|urlencode)}
+{if and($attribute.object.data_map.audiodescription|is_set, $attribute.object.data_map.audiodescription.has_content)}
+	{def $audiodescription = concat( '&audiodescription=', $attribute.object.data_map.audiodescription.content.filepath|ezroot(no)|urlencode)}
 {else}
 	{def $audiodescription = ''}
 {/if}
