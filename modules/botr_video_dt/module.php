@@ -15,4 +15,10 @@ $ViewList['post_url'] = array(
 			'params'=>array(''),
 );
 
+$ViewList['playlist'] = array(
+			'name'=>'Playlist',
+			'script'=>'playlist.php',
+			'params'=>array('playlist', 'captions'),
+);
+
 ?>
