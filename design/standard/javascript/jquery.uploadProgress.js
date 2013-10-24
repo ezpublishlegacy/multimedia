@@ -28,6 +28,20 @@ if (/WebKit/i.test(navigator.userAgent) && top.document == document) { // sniff
   }, 10);
 }
 
+function runYourFunctionWhenJQueryIsLoaded() {
+    if (window.$){
+        //possibly some other JQuery checks to make sure that everything is loaded here
+
+        yourFunctionToRun();
+    } else {
+        setTimeout(runYourFunctionWhenJQueryIsLoaded, 50);
+    }
+}
+
+runYourFunctionWhenJQueryIsLoaded();
+
+function yourFunctionToRun(){
+
 /*
 * jquery.uploadProgress
 *
@@ -123,3 +137,5 @@ jQuery.uploadProgress = function(e, options) {
 };
 
 })(jQuery);
+
+}
