@@ -15,7 +15,7 @@ $caption = '';
 $audiodescription = '';
 $pugins = '';
 
-preg_match('/playlist: "([^"]*)"/', $my_js, $playlist);
+preg_match('/playlist: "([^"]*)"((\s)?,|$|})/', $my_js, $playlist);
 
 if (count($playlist) > 1) {
 	$p = $playlist[1];
