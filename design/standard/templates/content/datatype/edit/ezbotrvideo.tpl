@@ -43,6 +43,7 @@
 	<input type="hidden" name="date" value='{currentdate()|datetime('custom', '%m/%d/%Y')}'/>
 	<input type="hidden" name="author" value='{fetch(user, current_user).contentobject.name}'/>
 	<input type="hidden" name="redirect_uri" value='/botr_video_dt/post_url'/>
+	<input type="hidden" name="ezxform_token" value="@$ezxFormToken@">
 </div>
 <div class='fake_uploadForm'>
 	<label>Select video</label>

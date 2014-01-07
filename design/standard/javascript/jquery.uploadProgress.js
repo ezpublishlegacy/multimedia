@@ -112,7 +112,7 @@ jQuery.uploadProgress = function(e, options) {
       }
 
       if (upload.state == 'done' || upload.state == 'error') {
-        window.clearInterval(options.timer);
+        window.top.clearInterval(options.timer);
         options.complete(upload);
 		proc=1;
       }
