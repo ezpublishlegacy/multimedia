@@ -38,7 +38,7 @@ class eZBotrVideo
 				$vid = '/content/error/404';
 
 				foreach ($response2['conversions'] as $c) {
-					$tmp = $c['link']['protocol'].$c['link']['address'].$c['link']['path'];
+					$tmp = $c['link']['protocol']."://".$c['link']['address'].$c['link']['path'];
 					$pa[]=$tmp;
 					if (strpos($tmp,'videos') !== false && $vid == '/content/error/404') $vid = $tmp;
 					$si[]=$c['filesize'];
@@ -69,7 +69,7 @@ class eZBotrVideo
 				$signature = md5($path.':'.$expires.':'.$Private);
 
 				$downloadme  =  $upath.'?exp='.$expires.'&sig='.$signature;
-		
+
 				$this->Attributes = array('download' => $downloadme, 'html' => $html, 'response' => array($response1, $response2), 'args' => $botr_api->getargs());
 		
 			}
