@@ -16,7 +16,7 @@ if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == ‘on’ || $_SERVER['HTTP
 
 if( $_SERVER['SERVER_PORT'] == 443 )
 {
-        $my_js = preg_replace("/http:/", "/https:/", $my_js);
+        $my_js = preg_replace("/http:/", "https:", $my_js);
 }
 
 $addme = false;
