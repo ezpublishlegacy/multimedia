@@ -20,7 +20,5 @@
 	{def $audiodescription = ''}
 {/if}
 
-<div id="botr_{$vid_id}_{$player}_div" style='width: {sum($player_r['width'], 15)}px; height: {sum($player_r['height'], 15)}px' class="botrplayer"></div>
-
 <script type="text/javascript" src="//content.jwplatform.com/players/{$vid_id}-{$player}{$caption}{$audiodescription}.js"></script>
 
