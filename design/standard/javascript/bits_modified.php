@@ -10,10 +10,7 @@ $my_js = file_get_contents("http://content.jwplatform.com/players/$keys.js");
 
 $my_js = preg_replace("/document\.write.*;/", "", $my_js);
 
-if (isset($_SERVER['HTTPS']) &&
-($_SERVER['HTTPS'] == ‘on’ || $_SERVER['HTTPS'] == 1) ||
-isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
-$_SERVER['HTTP_X_FORWARDED_PROTO'] == ‘https’) {
+if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == ‘on’ || $_SERVER['HTTPS'] == 1) || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&$_SERVER['HTTP_X_FORWARDED_PROTO'] == "https") {
         $my_js = preg_replace("/http:/", "/https:/", $my_js);
 }
 
