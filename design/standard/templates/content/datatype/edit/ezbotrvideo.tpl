@@ -9,6 +9,9 @@
 {* Current image. *}
 
 <div class="block">
+<label>Current Usage:</label>
+<div class="current-usage"><span>{$attribute_content.attributes.delivery}</span><div>Delivered this Month</div></div>
+<div class="current-usage"><span>{$attribute_content.attributes.storage}</span><div>Total Stored</div></div>
 <label>Current Video:</label>
 <div class='fileDetails'>
 
@@ -156,4 +159,3 @@
 
 {/let}
 {/default}
-
