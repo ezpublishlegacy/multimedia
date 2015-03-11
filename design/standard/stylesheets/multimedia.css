@@ -1,0 +1,12 @@
+.current-usage {
+    background-color: #0077A5;
+    color: #ffffff;
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    padding: 10px;
+}
+.current-usage span {
+    display: block;
+    font-weight: bold;
+    text-align: center;
+}
