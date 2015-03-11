@@ -5,6 +5,7 @@ DesignExtensions[]=multimedia
 
 [StylesheetSettings]
 ;CSSFileList[]
+BackendCSSFileList[]=multimedia.css
 
 [JavaScriptSettings]
 ;JavaScriptList[]

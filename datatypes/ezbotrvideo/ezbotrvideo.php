@@ -24,6 +24,13 @@ class eZBotrVideo
 			$this->Attributes = array('conversion' => '', 'html'=>"<p>No video currently loaded.</p>", 'video_key' => $id, 'response' => array(false, false), 'download' => '/content/error/404');
 		} else {
 		
+            $timestamp = time();
+            $month_start = strtotime(date('Y-m-01 00:00:00', $timestamp));
+            $month_end  = strtotime(date('Y-m-t 23:59:59', $timestamp));
+            $delivery_data = $botr_api->call('/accounts/usage/show', array('account_key' => $Key, 'start_date' => $month_start, 'end_date' => $month_end, 'aggregate'=> true));
+            $storage_data = $botr_api->call('/accounts/usage/show', array('account_key' => $Key, 'aggregate'=> true));
+            $storage = $this->sizeFilter($storage_data['account']['storage']['used']);
+            $delivery = $this->sizeFilter($delivery_data['account']['delivery']['used']);
 			$response1 = $botr_api->call('/videos/show', array('video_key'=>$id));
 			$response2 = $botr_api->call('/videos/conversions/list', array('video_key'=>$id));
 
@@ -69,9 +76,8 @@ class eZBotrVideo
 				$signature = md5($path.':'.$expires.':'.$Private);
 
 				$downloadme  =  $upath.'?exp='.$expires.'&sig='.$signature;
-		
-				$this->Attributes = array('download' => $downloadme, 'html' => $html, 'response' => array($response1, $response2), 'args' => $botr_api->getargs());
-		
+
+				$this->Attributes = array('download' => $downloadme, 'html' => $html, 'response' => array($response1, $response2), 'args' => $botr_api->getargs(), 'delivery' => $delivery, 'storage' => $storage);
 			}
 		
 		}
@@ -118,6 +124,13 @@ class eZBotrVideo
                 return null;
             }break;
         }
+    }
+
+    function sizeFilter( $bytes )
+    {
+        $label = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB' );
+        for( $i = 0; $bytes >= 1024 && $i < ( count( $label ) -1 ); $bytes /= 1024, $i++ );
+        return( round( $bytes, 2 ) . " " . $label[$i] );
     }
 
     public $ID;
