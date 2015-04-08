@@ -79,7 +79,7 @@ class eZBotrVideo
 
 				$downloadme  =  $upath.'?exp='.$expires.'&sig='.$signature;
 
-				$this->Attributes = array('download' => $downloadme, 'html' => $html, 'response' => array($response1, $response2), 'args' => $botr_api->getargs(), 'delivery' => $delivery, 'storage' => $storage);
+				$this->Attributes = array('download' => $downloadme, 'thumb' => $thumb, 'html' => $html, 'response' => array($response1, $response2), 'args' => $botr_api->getargs(), 'delivery' => $delivery, 'storage' => $storage);
 			}
 		
 		}
