@@ -1,4 +1,4 @@
-<?
+<?php
 
 $vars = (count($_POST)) ? $_POST : $_GET;
 

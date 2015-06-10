@@ -1,4 +1,5 @@
-<?
+<?php
+
 eZDebug::writeDebug('test');
 $ini = new eZINI('botr.ini');
 $Key = $ini->variable('BOTRSettings', 'Key');
